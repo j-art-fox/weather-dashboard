@@ -4,7 +4,12 @@ var cityInput = $("#input-text-field");
 var searchBtn = $("#search-btn");
 var latVal = $("#lat-val");
 var lonVal = $("#lon-val");
+var currWea = $('#curr-wea');
+var currWin = $('#curr-win');
+var currHum = $('#curr-hum');
+var currUV = $('#curr-uvindex');
 var part = "";
+var unixDate: TimeInterval = 1590689991;
 
 
 $("form").on("submit", function (event) {
@@ -34,7 +39,10 @@ function findLatandLon() {
             return response.json()
         }).then(function (data) {
             console.log(data)
-            console.log("saved latval : " + latVal.val())
+            currWea.text(data.current.weather[0].description)
+            currWin.text(data.current.wind_speed + "mph")
+            currHum.text(data.current.humidity)
+            currUV.text(data.current.uvi)
         });
     })
 };
