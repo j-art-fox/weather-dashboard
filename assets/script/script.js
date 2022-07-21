@@ -46,9 +46,9 @@ $("form").on("submit", function (event) {
     updateCityName();
     fetchWeather();
 
-    var searchText = cityNameEl.val();
+    var searchText = cityInput.val();
     historyItems.push(searchText);
-    cityNameEl.value = "";
+    cityInput.value = "";
     storeHistory();
     renderSearchHistory();
 });
@@ -87,11 +87,11 @@ function fetchWeather() {
             wea3.text(data.daily[1].weather[0].description)
             wea4.text(data.daily[2].weather[0].description)
             wea5.text(data.daily[3].weather[0].description)
-            currWin.text(data.current.wind_speed + "mph")
-            win2.text(data.daily[0].wind_speed + "mph")
-            win3.text(data.daily[1].wind_speed + "mph")
-            win4.text(data.daily[2].wind_speed + "mph")
-            win5.text(data.daily[3].wind_speed + "mph")
+            currWin.text(data.current.wind_speed + " mph")
+            win2.text(data.daily[0].wind_speed + " mph")
+            win3.text(data.daily[1].wind_speed + " mph")
+            win4.text(data.daily[2].wind_speed + " mph")
+            win5.text(data.daily[3].wind_speed + " mph")
             currHum.text(data.current.humidity + " g.m-3")
             hum2.text(data.daily[0].humidity + " g.m-3")
             hum3.text(data.daily[1].humidity + " g.m-3")
@@ -138,7 +138,7 @@ function updateCityName() {
 }
 
 function renderSearchHistory() {
-    searchHistory.innerHTML = ""
+    $(searchHistory).html("");
     for (let i = 0; i < historyItems.length; i++) {
         var historyItem = historyItems[i];
         var li = $("li");
