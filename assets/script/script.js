@@ -4,13 +4,15 @@ var cityInput = $("#input-text-field");
 var searchBtn = $("#search-btn");
 var latVal = $("#lat-val");
 var lonVal = $("#lon-val");
+var currDat = $("#current-date");
+var currTemp = $("#temp");
 var currWea = $('#curr-wea');
 var currWin = $('#curr-win');
 var currHum = $('#curr-hum');
 var currUV = $('#curr-uvindex');
+var weaIcon = $('#weather-icon');
 var part = "";
-var unixDate: TimeInterval = 1590689991;
-
+// var usabledate = date()
 
 $("form").on("submit", function (event) {
     event.preventDefault();
@@ -34,15 +36,22 @@ function findLatandLon() {
         console.log(cityLat + " and " + cityLon)
         latVal.text(cityLat)
         lonVal.text(cityLon)
-        var weatherApiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + cityLat + "&lon=" + cityLon + "&exclude=" + part + "&appid=" + apiKey;
+        var weatherApiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + cityLat + "&lon=" + cityLon + "&units=imperial&exclude=" + part + "&appid=" + apiKey;
         fetch(weatherApiUrl).then(function (response) {
             return response.json()
         }).then(function (data) {
             console.log(data)
+            var iconId = data.current.weather[0].icon
             currWea.text(data.current.weather[0].description)
             currWin.text(data.current.wind_speed + "mph")
             currHum.text(data.current.humidity)
             currUV.text(data.current.uvi)
+            currTemp.text(data.current.temp)
+            var currTimeUnix = data.current.dt
+            var currDT = moment.unix(currTimeUnix).format("MMM Do, YYYY, hh:mm:ss")
+            currDat.text(currDT)
+            weaIcon.attr("src","http://openweathermap.org/img/wn/"+iconId+"@2x.png")
+
         });
     })
 };

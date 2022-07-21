@@ -6,39 +6,43 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="./assets/style/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/style/style.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
 </head>
 
 <body>
   <div>
     <h1 class="display-1 text-left p-4 bg-info text-white">Weather Dashboard</h1>
   </div>
-  <div class="jumbotron">
-    <form >
-      <div>
-        <h1 class="display-3"><span id="city-name">CITY NAME</span> | <span id="current-date">CURRENT DATE</span></h1>
-        <p class="lead">Latitude: <span id="lat-val">#</span> | Longitude: <span id="lon-val">#</span></p>
-        <p class="lead" id="curr-wea"></p>
-        <p class="lead">Wind: <span id="curr-win"></span></p>
-        <p class="lead">Humidity: <span id="curr-hum"></span></p>
-        <p class="lead">UV-Index: <span id="curr-uvindex"></span></p>
-        <p class="lead">Temperature:<span id="temp"></span></p>
-        <hr class="my-2">
-        <p>More info</p>
+  <div class="jumbotron bg-white">
+    <form>
+      <div class="">
         <div class="form-group">
-          <label for="input-text-field">city name</label>
-          <input type="text" name="city-name" id="input-text-field" class="form-control" placeholder="" aria-describedby="helpId">
+          <label for="input-text-field"></label>
+          <input type="text" name="city-name" id="input-text-field" class="form-control" placeholder=""
+            aria-describedby="helpId">
           <small id="helpId" class="text-muted">Search by city name</small>
         </div>
         <p class="lead">
           <button type="submit" class="btn btn-primary btn-lg" for="input-text-field" id="search-btn">Search</button>
         </p>
+        <h1 class="display-3"><span id="city-name"></span> <br> </h1>
+        <h2 id="current-date"></h2>
+        <p class="">Latitude: <span id="lat-val">#</span> | Longitude: <span id="lon-val">#</span></p>
+        <img id="weather-icon" src="" alt="">
+        <p class="lead">Temperature: <span id="temp"></span> °F</p>
+        <p class="lead" id="curr-wea"></p>
+        <p class="lead">Wind: <span id="curr-win"></span></p>
+        <p class="lead">Humidity: <span id="curr-hum"></span></p>
+        <p class="lead">UV-Index: <span id="curr-uvindex"></span></p>
+        <hr class="my-2">
+        <p>More info</p>
       </div>
     </form>
   </div>
