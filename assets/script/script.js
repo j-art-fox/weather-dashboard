@@ -1,4 +1,5 @@
 var cityNameEl = $("#city-name");
+var searchHistory = $("#search-history");
 var apiKey = "c30976a5c3073479b6a8bf4fa197f32c";
 var cityInput = $("#input-text-field");
 var searchBtn = $("#search-btn");
@@ -36,15 +37,21 @@ var weaIcon3 = $('#weather-icon-3');
 var weaIcon4 = $('#weather-icon-4');
 var weaIcon5 = $('#weather-icon-5');
 var part = "";
-    // var usabledate = date()
+var historyItems = [];
+// var usabledate = date()
 
-    $("form").on("submit", function (event) {
-        event.preventDefault();
-        alert("test");
-        updateCityName();
-        fetchWeather();
+$("form").on("submit", function (event) {
+    event.preventDefault();
+    alert("test");
+    updateCityName();
+    fetchWeather();
 
-    });
+    var searchText = cityNameEl.val();
+    historyItems.push(searchText);
+    cityNameEl.value = "";
+    storeHistory();
+    renderSearchHistory();
+});
 
 var cityLat = "";
 var cityLon = "";
@@ -74,7 +81,7 @@ function fetchWeather() {
             temp2.text(data.daily[0].temp.day)
             temp3.text(data.daily[1].temp.day)
             temp4.text(data.daily[2].temp.day)
-            temp5.text(data.daily[3].temp.day)      
+            temp5.text(data.daily[3].temp.day)
             currWea.text(data.current.weather[0].description)
             wea2.text(data.daily[0].weather[0].description)
             wea3.text(data.daily[1].weather[0].description)
@@ -91,6 +98,10 @@ function fetchWeather() {
             hum4.text(data.daily[2].humidity + " g.m-3")
             hum5.text(data.daily[3].humidity + " g.m-3")
             currUV.text(data.current.uvi)
+            uv2.text(data.daily[0].uvi)
+            uv3.text(data.daily[1].uvi)
+            uv4.text(data.daily[2].uvi)
+            uv5.text(data.daily[3].uvi)
             var currTimeUnix = data.current.dt
             var currDT = moment.unix(currTimeUnix).format("MMM Do, YYYY, hh:mm:ss")
             currDat.text(currDT)
@@ -100,37 +111,53 @@ function fetchWeather() {
             weaIcon4.attr("src", "http://openweathermap.org/img/wn/" + iconId4 + "@2x.png")
             weaIcon5.attr("src", "http://openweathermap.org/img/wn/" + iconId5 + "@2x.png")
             updateDates()
+            
 
         });
     })
 };
 
-var tomorrow = moment().add(1,"days").format("MMM Do, YYYY");
-var theDayAfterTomorrow = moment().add(2,"days").format("MMM Do, YYYY");
-var theDayAfterTheDayAfterTomorrow = moment().add(3,"days").format("MMM Do, YYYY");
-var theDayAftertheDayAfterTheDayAfterTomorrow = moment().add(4,"days").format("MMM Do, YYYY");
+var tomorrow = moment().add(1, "days").format("MMM Do, YYYY");
+var theDayAfterTomorrow = moment().add(2, "days").format("MMM Do, YYYY");
+var theDayAfterTheDayAfterTomorrow = moment().add(3, "days").format("MMM Do, YYYY");
+var theDayAftertheDayAfterTheDayAfterTomorrow = moment().add(4, "days").format("MMM Do, YYYY");
 var day2 = $('#day-2');
 var day3 = $('#day-3');
 var day4 = $('#day-4');
 var day5 = $('#day-5');
 
-function updateDates(){
+function updateDates() {
     day2.text(tomorrow)
     day3.text(theDayAfterTomorrow)
     day4.text(theDayAfterTheDayAfterTomorrow)
     day5.text(theDayAftertheDayAfterTheDayAfterTomorrow)
 }
 
-// function findWeatherInfo() {
-//     var weatherApiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + cityLat + "&lon=" + cityLon + "&exclude=" + part + "&appid=" + apiKey;
-//     fetch(weatherApiUrl).then(function (response) {
-//         return response.json()
-//     }).then(function (data) {
-//         console.log(data)
-//         console.log("saved latval : " + latVal.val())
-//     });
-// }
-
 function updateCityName() {
     $("#city-name").text($("#input-text-field").val().toUpperCase());
 }
+
+function renderSearchHistory() {
+    searchHistory.innerHTML = ""
+    for (let i = 0; i < historyItems.length; i++) {
+        var historyItem = historyItems[i];
+        var li = $("li");
+        li.text(historyItem);
+        li.attr("data-index", i);
+        searchHistory.append(li);
+    }
+};
+
+function init () {
+    var storedHistory = JSON.parse(localStorage.getItem("historyItems"));
+    if (storedHistory !== null) {
+        historyItems = storedHistory;
+      }
+      renderSearchHistory();
+}
+
+function storeHistory() {
+    localStorage.setItem("historyItems", JSON.stringify(historyItems));
+}
+
+init ();

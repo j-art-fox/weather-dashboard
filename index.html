@@ -20,31 +20,39 @@
   <div>
     <h1 class="display-1 text-left p-4 bg-info text-white">Weather Dashboard</h1>
   </div>
-  <div class="jumbotron bg-white">
-    <form>
-      <div class="">
-        <div class="form-group">
-          <label for="input-text-field"></label>
-          <input type="text" name="city-name" id="input-text-field" class="form-control" placeholder=""
-            aria-describedby="helpId">
-          <small id="helpId" class="text-muted">Search by city name</small>
-        </div>
+  <div class="d-flex bg-light">
+    <form class="col-4">
+      <div class="form-group">
+        <label for="input-text-field"></label>
+        <input type="text" name="city-name" id="input-text-field" class="form-control" placeholder=""
+          aria-describedby="helpId">
+        <small id="helpId" class="text-muted">Search by city name</small>
         <p class="lead">
           <button type="submit" class="btn btn-primary btn-lg" for="input-text-field" id="search-btn">Search</button>
         </p>
-        <h1 class="display-3"><span id="city-name"></span> <br> </h1>
-        <h2 id="current-date"></h2>
-        <p class="">Latitude: <span id="lat-val">#</span> | Longitude: <span id="lon-val">#</span></p>
-        <img id="weather-icon" src="" alt="">
-        <p class="lead">Temperature: <span id="temp"></span> °F</p>
-        <p class="lead" id="curr-wea"></p>
-        <p class="lead">Wind: <span id="curr-win"></span></p>
-        <p class="lead">Humidity: <span id="curr-hum"></span></p>
-        <p class="lead">UV-Index: <span id="curr-uvindex"></span></p>
-        <hr class="my-2">
-        <p>More info</p>
       </div>
     </form>
+    <div class="col-4">
+      <ul class="list-group" id="search-history">
+        <li class="list-group-item">An item</li>
+      </ul>
+    </div>
+  </div>
+  <div class="w=100 jumbotron bg-white">
+    <div>
+      <h1 class="display-3"><span id="city-name"></span> <br> </h1>
+      <h2 id="current-date"></h2>
+      <p class="">Latitude: <span id="lat-val">#</span> | Longitude: <span id="lon-val">#</span></p>
+      <img id="weather-icon" src="" alt="">
+      <p class="lead">Temperature: <span id="temp"></span> °F</p>
+      <p class="lead" id="curr-wea"></p>
+      <p class="lead">Wind: <span id="curr-win"></span></p>
+      <p class="lead">Humidity: <span id="curr-hum"></span></p>
+      <p class="lead">UV-Index: <span id="curr-uvindex"></span></p>
+      <hr class="my-2">
+      <p>More info</p>
+    </div>
+
 
     <!-- FORECAST FOR THE NEXT FEW DAYS -->
     <div class="d-flex justify-content-center">
@@ -100,8 +108,8 @@
           </p>
         </div>
       </div>
-  </div>
-  <div class="container ">
+    </div>
+    <div class="container ">
     </div>
   </div>
 
