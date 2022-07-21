@@ -6,10 +6,30 @@ var latVal = $("#lat-val");
 var lonVal = $("#lon-val");
 var currDat = $("#current-date");
 var currTemp = $("#temp");
+var temp2 = $("#temp-2");
+var temp3 = $("#temp-3");
+var temp4 = $("#temp-4");
+var temp5 = $("#temp-5");
 var currWea = $('#curr-wea');
+var wea2 = $("#wea-2");
+var wea3 = $("#wea-3");
+var wea4 = $("#wea-4");
+var wea5 = $("#wea-5");
 var currWin = $('#curr-win');
+var win2 = $("#win-2");
+var win3 = $("#win-3");
+var win4 = $("#win-4");
+var win5 = $("#win-5");
 var currHum = $('#curr-hum');
+var hum2 = $("#hum-2");
+var hum3 = $("#hum-3");
+var hum4 = $("#hum-4");
+var hum5 = $("#hum-5");
 var currUV = $('#curr-uvindex');
+var uv2 = $("#uv-2");
+var uv3 = $("#uv-3");
+var uv4 = $("#uv-4");
+var uv5 = $("#uv-5");
 var weaIcon = $('#weather-icon');
 var weaIcon2 = $('#weather-icon-2');
 var weaIcon3 = $('#weather-icon-3');
@@ -50,11 +70,27 @@ function fetchWeather() {
             var iconId3 = data.daily[1].weather[0].icon
             var iconId4 = data.daily[2].weather[0].icon
             var iconId5 = data.daily[3].weather[0].icon
-            currWea.text(data.current.weather[0].description)
-            currWin.text(data.current.wind_speed + "mph")
-            currHum.text(data.current.humidity)
-            currUV.text(data.current.uvi)
             currTemp.text(data.current.temp)
+            temp2.text(data.daily[0].temp.day)
+            temp3.text(data.daily[1].temp.day)
+            temp4.text(data.daily[2].temp.day)
+            temp5.text(data.daily[3].temp.day)      
+            currWea.text(data.current.weather[0].description)
+            wea2.text(data.daily[0].weather[0].description)
+            wea3.text(data.daily[1].weather[0].description)
+            wea4.text(data.daily[2].weather[0].description)
+            wea5.text(data.daily[3].weather[0].description)
+            currWin.text(data.current.wind_speed + "mph")
+            win2.text(data.daily[0].wind_speed + "mph")
+            win3.text(data.daily[1].wind_speed + "mph")
+            win4.text(data.daily[2].wind_speed + "mph")
+            win5.text(data.daily[3].wind_speed + "mph")
+            currHum.text(data.current.humidity + " g.m-3")
+            hum2.text(data.daily[0].humidity + " g.m-3")
+            hum3.text(data.daily[1].humidity + " g.m-3")
+            hum4.text(data.daily[2].humidity + " g.m-3")
+            hum5.text(data.daily[3].humidity + " g.m-3")
+            currUV.text(data.current.uvi)
             var currTimeUnix = data.current.dt
             var currDT = moment.unix(currTimeUnix).format("MMM Do, YYYY, hh:mm:ss")
             currDat.text(currDT)
