@@ -42,15 +42,20 @@ var historyItems = [];
 
 $("form").on("submit", function (event) {
     event.preventDefault();
-    alert("test");
+    var searchText = cityInput.val();
+    if (searchText.length > 0) {
+        historyItems.push(searchText);
+    } else {
+        alert("Please enter a search term.")
+        return;
+    }
     updateCityName();
     fetchWeather();
 
-    var searchText = cityInput.val();
-    historyItems.push(searchText);
     cityInput.value = "";
     storeHistory();
     renderSearchHistory();
+
 });
 
 var cityLat = "";
@@ -111,7 +116,7 @@ function fetchWeather() {
             weaIcon4.attr("src", "http://openweathermap.org/img/wn/" + iconId4 + "@2x.png")
             weaIcon5.attr("src", "http://openweathermap.org/img/wn/" + iconId5 + "@2x.png")
             updateDates()
-            
+
 
         });
     })
@@ -141,23 +146,32 @@ function renderSearchHistory() {
     $(searchHistory).html("");
     for (let i = 0; i < historyItems.length; i++) {
         var historyItem = historyItems[i];
-        var li = $("li");
-        li.text(historyItem);
+        var li = $("<li>");
+        var button = $("<button>");
+        button.attr("class", "searchHisBtn")
+        button.text(historyItem);
         li.attr("data-index", i);
+        li.append(button);
         searchHistory.append(li);
+
     }
+    $(".searchHisBtn").on("click", function (event) {
+        console.log($("h1").html());
+        console.log(event.target.html());
+    });
 };
 
-function init () {
+
+function init() {
     var storedHistory = JSON.parse(localStorage.getItem("historyItems"));
     if (storedHistory !== null) {
         historyItems = storedHistory;
-      }
-      renderSearchHistory();
+    }
+    renderSearchHistory();
 }
 
 function storeHistory() {
     localStorage.setItem("historyItems", JSON.stringify(historyItems));
 }
 
-init ();
+init();
