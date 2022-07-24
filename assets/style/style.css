@@ -2,6 +2,10 @@
     font-family: 'Varela Round', sans-serif; 
 }
 
-.searchHisBtn{
-    
+li{
+    padding: 3px;
+    list-style-type:none;
+    background-image:none;
+    background-repeat:none;
+    background-position:0; 
 }

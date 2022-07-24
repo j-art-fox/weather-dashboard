@@ -116,8 +116,6 @@ function fetchWeather() {
             weaIcon4.attr("src", "http://openweathermap.org/img/wn/" + iconId4 + "@2x.png")
             weaIcon5.attr("src", "http://openweathermap.org/img/wn/" + iconId5 + "@2x.png")
             updateDates()
-
-
         });
     })
 };
@@ -156,8 +154,9 @@ function renderSearchHistory() {
 
     }
     $(".searchHisBtn").on("click", function (event) {
-        console.log($("h1").html());
-        console.log(event.target.html());
+       $("#input-text-field").val(event.target.innerText);
+       $("form").submit();
+
     });
 };
 

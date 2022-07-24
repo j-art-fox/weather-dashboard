@@ -12,8 +12,8 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="./assets/style/style.css">
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <link rel="stylesheet" href="./assets/style/style.css">
 </head>
 
 <body>
@@ -37,12 +37,12 @@
       </ul>
     </div>
   </div>
-  <div class="w=100 jumbotron bg-white">
+  <div class="d-flex w=100 jumbotron bg-white">
     <div>
       <h1 class="display-3"><span id="city-name"></span> <br> </h1>
       <h2 id="current-date"></h2>
       <p class="">Latitude: <span id="lat-val">#</span> | Longitude: <span id="lon-val">#</span></p>
-      <img id="weather-icon" src="" alt="">
+      <!-- <img id="weather-icon" src="" alt=""> -->
       <p class="lead">Temperature: <span id="temp"></span> °F</p>
       <p class="lead" id="curr-wea"></p>
       <p class="lead">Wind: <span id="curr-win"></span></p>
@@ -51,7 +51,10 @@
       <hr class="my-2">
       <p>More info</p>
     </div>
-
+    <div>
+      <img id="weather-icon" class="align-middle h-100" src="" alt="">
+    </div>
+  </div>
 
     <!-- FORECAST FOR THE NEXT FEW DAYS -->
     <div class="d-flex justify-content-center">
@@ -110,7 +113,7 @@
     </div>
     <div class="container ">
     </div>
-  </div>
+  
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
