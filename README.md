@@ -12,7 +12,7 @@ This Weather Dashboard allows users to see the weather outlook for multiple citi
 - This project was completed with the intention of applying what I had learned about server-side APIs, parameters, and the Javascript required to fetch data.
 
 * **Solutions**
-- - The main problems solved while working on this project were figuring out how to  
+-  The main problems solved while working on this project were figuring out how to  
 
 * **What I learned**
 - Through this project I learned more about the entire infrastructure based around server-side APIs and how one can use them to create web applications. 
